@@ -2,18 +2,20 @@ import type { CardColor } from "../../types/CardData.ts";
 
 
 export const COLOR_MAP: Record<CardColor, string> = {
-  red: "#ef4444",
-  blue: "#3b82f6",
-  green: "#099414e0",
-  yellow: "#eff31bff",
-  black: "#111827",
-  purple: "#a855f7",
-  orange: "#f97316",
-  gray: "#636874ff",
+  generic: "#969696ff",
+  red: "#a01010ff",
+  blue: "#164899ff",
+  green: "#005f08ff",
+  yellow: "#d3c726ff",
+  black: "#272727ff",
+  purple: "#5e3088ff",
+  orange: "#ce5600ff",
+  gray: "#8a8a8aff",
 };
 
 
 export const ALL_COLORS: CardColor[] = [
+  "generic",
   "red",
   "blue",
   "green",

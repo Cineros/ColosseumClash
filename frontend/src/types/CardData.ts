@@ -1,4 +1,5 @@
 export type CardColor =
+    | 'generic'
     | 'red'
     | 'blue'
     | 'green'
