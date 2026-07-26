@@ -5,6 +5,7 @@ import CostEditor from './CostEditor';
 import TypeEditor from './TypeEditor';
 import MetadataEditor from './MetadataEditor';
 import './EditorPanel.css';
+import ExportButton from './ExportButton';
 
 interface Props {
     data: CardData;
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export default function EditorPanel({ data, updateCard }: Props) {
+    
     return (
         <div className="editor-panel">
             {/* SECTION 1: CORE INFO */}

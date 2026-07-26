@@ -61,13 +61,13 @@ export default function CardCreator() {
                 <CardPrintWrapper>
                     <Card data={card} />
                 </CardPrintWrapper>
+                <ExportButton cardRef={cardRef} data={card} />
             </div>
 
             {/* Right side: controls */}
             <div className="editor-area">
                 <EditorPanel data={card} updateCard={setCard} />
-
-                <ExportButton cardRef={cardRef} data={card} />
+                
             </div>
         </div>
     );
