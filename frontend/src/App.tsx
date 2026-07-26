@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import Footer from './components/Footer/Footer';
+import Navbar from './components/Navbar/Navbar';
+import LandingPage from './pages/LandingPage/LandingPage';
 
 function App() {
 
@@ -15,7 +18,11 @@ function App() {
 
     return (
         <div>
-            {cards.map((card:any)=>
+            <Navbar />
+
+            <LandingPage />
+            <Footer />
+            {cards.map((card:any) =>
 
                 <div key={card.id}>
                     {card.title}

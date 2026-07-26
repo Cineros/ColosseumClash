@@ -1,0 +1,39 @@
+.card-creator-page {
+  min-height: calc(100vh - 140px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 3rem;
+
+  padding: 3rem;
+  background: #f3f4f6;
+}
+
+
+.card-preview-area {
+  display: flex;
+  justify-content: center;
+}
+
+
+.editor-placeholder {
+  width: 350px;
+
+  background: white;
+  padding: 2rem;
+
+  border-radius: 1rem;
+
+  border: 1px solid #e5e7eb;
+}
+
+
+@media(max-width:900px){
+
+  .card-creator-page {
+    flex-direction: column;
+  }
+
+}

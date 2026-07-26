@@ -1,0 +1,55 @@
+export type CardColor =
+    | 'red'
+    | 'blue'
+    | 'green'
+    | 'yellow'
+    | 'black'
+    | 'purple'
+    | 'orange'
+    | 'gray';
+
+export interface CardCost {
+  color: CardColor;
+  amount: number;
+}
+
+
+export interface CardTypeInfo {
+
+  primary: string;
+
+  secondary?: string;
+
+  rarity?: string;
+
+}
+
+
+export interface CardMetadata {
+
+  setName?: string;
+
+  cardNumber?: string;
+
+  creator?: string;
+
+}
+
+export interface CardData {
+    type: string | number | readonly string[];
+    title: string;
+
+    artist: string;
+
+    colors: CardColor[];
+
+    costs: CardCost[];
+
+    typeInfo: CardTypeInfo;
+
+    description: string;
+
+    artwork?: string;
+
+    metadata?: CardMetadata;
+}

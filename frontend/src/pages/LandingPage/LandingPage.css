@@ -1,0 +1,161 @@
+.landing-page {
+  color: #111827;
+}
+
+/* Hero */
+
+.hero {
+  padding: 6rem 1rem;
+  background:
+    linear-gradient(
+      135deg,
+      #f9fafb,
+      #eef2ff
+    );
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: #4b5563;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.primary-button,
+.secondary-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.primary-button {
+  background: #111827;
+  color: white;
+}
+
+.secondary-button {
+  border: 1px solid #d1d5db;
+  color: #111827;
+  background: white;
+}
+
+
+/* Templates */
+
+.templates {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+}
+
+.templates h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
+}
+
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+
+/* Template Cards */
+
+.template-card {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.template-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.template-preview {
+  height: 220px;
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #8b5cf6
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.template-preview span {
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.template-content {
+  padding: 1.5rem;
+}
+
+.template-content h3 {
+  margin-top: 0;
+}
+
+.template-content p {
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.use-template-button {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: #111827;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* Mobile */
+
+@media (max-width: 900px) {
+  .template-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+}

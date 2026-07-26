@@ -1,0 +1,100 @@
+.editor-panel {
+    width: 350px;
+
+    background: white;
+
+    padding: 2rem;
+
+    border-radius: 1rem;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1rem;
+}
+
+.editor-panel input,
+.editor-panel textarea {
+    width: 100%;
+
+    padding: 0.5rem;
+}
+
+.color-selector {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 0.75rem;
+}
+
+.color-dot {
+    width: 32px;
+
+    height: 32px;
+
+    border-radius: 50%;
+
+    border: 2px solid transparent;
+
+    cursor: pointer;
+}
+
+.color-dot.selected {
+    border-color: black;
+
+    transform: scale(1.15);
+}
+
+.card-creator-page {
+    min-height: calc(100vh - 140px);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    gap: 3rem;
+
+    padding: 3rem;
+
+    background: #f3f4f6;
+}
+
+.card-preview-area {
+    display: flex;
+
+    justify-content: center;
+}
+
+.editor-area {
+    width: 350px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1rem;
+}
+
+.cost-editor-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.75rem;
+
+    margin-bottom: 0.5rem;
+}
+
+.cost-editor-row input {
+    width: 60px;
+
+    padding: 0.35rem;
+
+    border-radius: 0.5rem;
+
+    border: 1px solid #d1d5db;
+}
