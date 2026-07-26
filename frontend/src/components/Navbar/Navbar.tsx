@@ -1,33 +1,34 @@
-import { useState } from "react";
-import "./Navbar.css";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import './Navbar.css';
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
-  return (
-    <header className="navbar">
-      <div className="navbar-container">
-        <a href="/" className="navbar-logo">
-          CardForge
-        </a>
+    return (
+        <header className="navbar">
+            <div className="navbar-container">
+                <Link to="/" className="navbar-logo">
+                    CardForge
+                </Link>
 
-        <button
-          className="navbar-toggle"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle navigation"
-        >
-          ☰
-        </button>
+                <button
+                    className="navbar-toggle"
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    aria-label="Toggle navigation"
+                >
+                    ☰
+                </button>
 
-        <nav className={`navbar-links ${menuOpen ? "open" : ""}`}>
-          <a href="/gallery">Gallery</a>
-          <a href="../../../CardCreatorPage.tsx">Card Creator</a>
+                <nav className={`navbar-links ${menuOpen ? 'open' : ''}`}>
+                    <Link to="/gallery">Gallery</Link>
 
-          <button className="login-button">
-            Login
-          </button>
-        </nav>
-      </div>
-    </header>
-  );
+                    <Link to="/creator">Card Creator</Link>
+
+                    <button className="login-button">Login</button>
+                </nav>
+            </div>
+        </header>
+    );
 }

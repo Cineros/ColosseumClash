@@ -48,7 +48,11 @@
 }
 
 .card-creator-page {
-    min-height: calc(100vh - 140px);
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 2rem auto;
 
     display: flex;
 
@@ -56,17 +60,25 @@
 
     align-items: flex-start;
 
-    gap: 3rem;
+    gap: 2rem;
 
-    padding: 3rem;
+    padding: 1.5rem;
 
-    background: #f3f4f6;
+    background: #d1d5db;
+
+    border-radius: 1.5rem;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 .card-preview-area {
     display: flex;
 
     justify-content: center;
+
+    align-items: center;
+
+    width: 450px;
 }
 
 .editor-area {

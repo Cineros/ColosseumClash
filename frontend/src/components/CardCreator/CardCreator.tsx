@@ -7,6 +7,7 @@ import ExportButton from './ExportButton';
 import type { CardData } from '../../types/CardData';
 
 import './CardCreator.css';
+import CardPrintWrapper from './Card/CardPrintWrapper';
 
 const defaultCard: CardData = {
     title: 'Ancient Dragon',
@@ -45,7 +46,7 @@ const defaultCard: CardData = {
         cardNumber: '001',
         creator: 'Alex Smith',
     },
-    type: ''
+    type: '',
 };
 
 export default function CardCreator() {
@@ -56,15 +57,17 @@ export default function CardCreator() {
     return (
         <div className="card-creator-page">
             {/* Left side: live card preview */}
-            <div className="card-preview-area" ref={cardRef}>
-                <Card data={card} />
+            <div ref={cardRef}>
+                <CardPrintWrapper>
+                    <Card data={card} />
+                </CardPrintWrapper>
             </div>
 
             {/* Right side: controls */}
             <div className="editor-area">
                 <EditorPanel data={card} updateCard={setCard} />
 
-                <ExportButton cardRef={cardRef} />
+                <ExportButton cardRef={cardRef} data={card} />
             </div>
         </div>
     );

@@ -1,8 +1,10 @@
-import type { CardData } from '../../types/CardData.ts';
-import ArtworkUploader from './ArtworkUploader.tsx';
+import type { CardData } from '../../types/CardData';
+
+import ArtworkUploader from './ArtworkUploader';
 import ColorSelector from './ColorSelector';
-import ExportButton from './ExportButton.tsx';
 import CostEditor from './CostEditor';
+import TypeEditor from './TypeEditor';
+import MetadataEditor from './MetadataEditor';
 
 interface Props {
     data: CardData;
@@ -13,90 +15,117 @@ interface Props {
 export default function EditorPanel({ data, updateCard }: Props) {
     return (
         <div className="editor-panel">
-            <h2>Card Editor</h2>
+            <section className="editor-section">
+                <h2>Card Information</h2>
 
-            <label>
-                Title
+                <label>Title</label>
+
                 <input
                     value={data.title}
                     onChange={(e) =>
                         updateCard((prev) => ({
                             ...prev,
+
                             title: e.target.value,
                         }))
                     }
                 />
-            </label>
 
-            <label>
-                Artist
+                <label>Artist</label>
+
                 <input
                     value={data.artist}
                     onChange={(e) =>
                         updateCard((prev) => ({
                             ...prev,
+
                             artist: e.target.value,
                         }))
                     }
                 />
-            </label>
+            </section>
 
-            <ColorSelector
-                selected={data.colors}
-                setSelected={(colors) =>
-                    updateCard((prev) => ({
-                        ...prev,
-                        colors,
-                    }))
-                }
-            />
-            <CostEditor
-                colors={data.colors}
-                costs={data.costs}
-                setCosts={(costs) =>
-                    updateCard((prev) => ({
-                        ...prev,
+            <section className="editor-section">
+                <h2>Appearance</h2>
 
-                        costs,
-                    }))
-                }
-            />
-
-            <label>
-                Type
-                <input
-                    value={data.type}
-                    onChange={(e) =>
+                <ColorSelector
+                    selected={data.colors}
+                    setSelected={(colors) =>
                         updateCard((prev) => ({
                             ...prev,
-                            type: e.target.value,
+
+                            colors,
                         }))
                     }
                 />
-            </label>
 
-            <label>
-                Description
+                <ArtworkUploader
+                    artwork={data.artwork}
+                    setArtwork={(artwork) =>
+                        updateCard((prev) => ({
+                            ...prev,
+
+                            artwork,
+                        }))
+                    }
+                />
+            </section>
+
+            <section className="editor-section">
+                <h2>Game Data</h2>
+
+                <CostEditor
+                    colors={data.colors}
+                    costs={data.costs}
+                    setCosts={(costs) =>
+                        updateCard((prev) => ({
+                            ...prev,
+
+                            costs,
+                        }))
+                    }
+                />
+
+                <TypeEditor
+                    typeInfo={data.typeInfo}
+                    setTypeInfo={(typeInfo) =>
+                        updateCard((prev) => ({
+                            ...prev,
+
+                            typeInfo,
+                        }))
+                    }
+                />
+            </section>
+
+            <section className="editor-section">
+                <h2>Description</h2>
+
                 <textarea
                     value={data.description}
+                    rows={5}
                     onChange={(e) =>
                         updateCard((prev) => ({
                             ...prev,
+
                             description: e.target.value,
                         }))
                     }
                 />
-            </label>
+            </section>
 
-            <ArtworkUploader
-                artwork={data.artwork}
-                setArtwork={(artwork) =>
-                    updateCard((prev) => ({
-                        ...prev,
-                        artwork,
-                    }))
-                }
-            />
+            <section className="editor-section">
+                <MetadataEditor
+                    metadata={data.metadata}
+                    setMetadata={(metadata) =>
+                        updateCard((prev) => ({
+                            ...prev,
+
+                            metadata,
+                        }))
+                    }
+                />
+            </section>
         </div>
     );
 }

@@ -20,7 +20,7 @@ interface Props {
 export default function Card({ data }: Props) {
     return (
         <div className="card">
-            <CardBackground colors={data.colors} />
+            <CardBackground />
 
             <InnerFrame colors={data.colors} />
 
@@ -28,9 +28,11 @@ export default function Card({ data }: Props) {
 
             <Artist>{data.artist}</Artist>
 
-            <ArtworkFrame artwork={data.artwork} />
+            <div className="artwork-area">
+                <ArtworkFrame />
 
-            <CostDisplay costs={data.costs} />
+                <CostDisplay costs={data.costs} />
+            </div>
 
             <TypeBar typeInfo={data.typeInfo} />
 
