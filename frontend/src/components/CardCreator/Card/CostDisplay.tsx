@@ -40,9 +40,17 @@ export default function CostDisplay({ costs }: Props) {
         (a, b) =>
             CANONICAL_ORDER.indexOf(a.color) - CANONICAL_ORDER.indexOf(b.color),
     );
+    const count = sortedCosts.length;
 
     return (
-        <div className="cost-display">
+        <div
+            className="cost-display"
+            style={
+                {
+                    '--cost-count': count,
+                } as React.CSSProperties
+            }
+        >
             {sortedCosts.map((cost) => (
                 <div
                     key={cost.color}

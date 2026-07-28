@@ -265,8 +265,8 @@ export default function GemIcon({ colors }: Props) {
                         {/* Outer Gem Border */}
                         <path
                             d="M 50 135 C 26 100 10 75 10 48 C 10 20 28 8 50 8 C 72 8 90 20 90 48 C 90 75 74 100 50 135 Z"
-                            stroke="rgba(15, 23, 42, 0.9)"
-                            strokeWidth="4"
+                            stroke="rgba(22, 14, 14, 0.9)"
+                            strokeWidth="5"
                             strokeLinejoin="round"
                         />
                     </svg>

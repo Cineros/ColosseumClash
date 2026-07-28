@@ -12,6 +12,9 @@ import DescriptionBox from './DescriptionBox';
 import GemIcon from './GemIcon';
 import CostDisplay from './CostDisplay';
 import CopyrightBorder from './CopyrightBorder';
+import DamageIcon from './DamageIcon';
+import ArmorIcon from './ArmorIcon';
+import RarityIcon from './RarityIcon';
 
 interface Props {
     data: CardData;
@@ -29,9 +32,13 @@ export default function Card({ data }: Props) {
             <Artist>{data.artist}</Artist>
 
             <div className="artwork-area">
-                <ArtworkFrame />
+                <ArtworkFrame artwork={data.artwork} />
 
                 <CostDisplay costs={data.costs} />
+
+                {data.typeInfo.rarity && (
+                    <RarityIcon rarity={data.typeInfo.rarity} />
+                )}
             </div>
 
             <TypeBar typeInfo={data.typeInfo} />
@@ -41,6 +48,14 @@ export default function Card({ data }: Props) {
             <CopyrightBorder
                 text={`© ${data.metadata?.creator ?? 'Creator'}`}
             />
+
+            {data.typeInfo.primary === 'Gladiator' && (
+                <>
+                    <DamageIcon value={data.damage} />
+
+                    <ArmorIcon value={data.armor} />
+                </>
+            )}
 
             <GemIcon colors={data.colors} />
         </div>

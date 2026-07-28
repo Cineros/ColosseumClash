@@ -33,7 +33,7 @@ export default function ExportButton({ cardRef, data }: Props) {
 
                     height: 1050,
 
-                    pixelRatio: 1,
+                    pixelRatio: 6,
 
                     cacheBust: true,
                 },

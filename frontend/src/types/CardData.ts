@@ -19,7 +19,7 @@ export interface CardTypeInfo {
 
   primary: string;
 
-  secondary?: string;
+  tribe?: string;
 
   rarity?: string;
 
@@ -53,4 +53,8 @@ export interface CardData {
     artwork?: string;
 
     metadata?: CardMetadata;
+
+    damage?: number;
+
+    armor?: number;
 }

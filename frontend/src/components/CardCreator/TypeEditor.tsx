@@ -1,12 +1,43 @@
 import type { CardTypeInfo } from '../../types/CardData';
 
+const RARITY_OPTIONS = [
+    'Rare',
+    'Uncommon',
+    'Common',
+    'Basic',
+    'Backroom Rare',
+    'Imported Rare',
+    'Illicit Rare',
+];
+
+const PRIMARY_TYPE_OPTIONS = [
+    'Gladiator',
+    'Special',
+    'Field',
+    'Champion',
+    'Boon',
+    'Curse',
+];
+
 interface Props {
     typeInfo: CardTypeInfo;
 
     setTypeInfo: (typeInfo: CardTypeInfo) => void;
+
+    damage?: number;
+
+    armor?: number;
+
+    setCombatStats: (damage?: number, armor?: number) => void;
 }
 
-export default function TypeEditor({ typeInfo, setTypeInfo }: Props) {
+export default function TypeEditor({
+    typeInfo,
+    setTypeInfo,
+    damage,
+    armor,
+    setCombatStats,
+}: Props) {
     function updateField(field: keyof CardTypeInfo, value: string) {
         setTypeInfo({
             ...typeInfo,
@@ -21,24 +52,74 @@ export default function TypeEditor({ typeInfo, setTypeInfo }: Props) {
 
             <label>Rarity</label>
 
-            <input
+            <select
                 value={typeInfo.rarity ?? ''}
                 onChange={(e) => updateField('rarity', e.target.value)}
-            />
+            >
+                <option value="">Select rarity...</option>
+
+                {RARITY_OPTIONS.map((rarity) => (
+                    <option key={rarity} value={rarity}>
+                        {rarity}
+                    </option>
+                ))}
+            </select>
 
             <label>Primary Type</label>
 
-            <input
+            <select
                 value={typeInfo.primary}
-                onChange={(e) => updateField('primary', e.target.value)}
-            />
+                onChange={(e) => {
+                    const primary = e.target.value;
 
-            <label>Secondary Type</label>
+                    updateField('primary', primary);
+
+                    if (primary !== 'Gladiator') {
+                        setCombatStats(undefined, undefined);
+                    }
+                }}
+            >
+                <option value="">Select primary type...</option>
+
+                {PRIMARY_TYPE_OPTIONS.map((type) => (
+                    <option key={type} value={type}>
+                        {type}
+                    </option>
+                ))}
+            </select>
+
+            <label>Tribe</label>
 
             <input
-                value={typeInfo.secondary ?? ''}
-                onChange={(e) => updateField('secondary', e.target.value)}
+                value={typeInfo.tribe ?? ''}
+                onChange={(e) => updateField('tribe', e.target.value)}
             />
+
+            {typeInfo.primary === 'Gladiator' && (
+                <>
+                    <label>Attack</label>
+
+                    <input
+                        type="number"
+                        min="0"
+                        value={damage ?? ''}
+                        onChange={(e) =>
+                            setCombatStats(Number(e.target.value), armor)
+                        }
+                    />
+
+                    <label>Armor</label>
+
+                    <input
+                        type="number"
+                        min="0"
+                        value={armor ?? ''}
+                        onChange={(e) =>
+                            setCombatStats(damage, Number(e.target.value))
+                        }
+                    />
+                </>
+            )}
         </div>
     );
 }

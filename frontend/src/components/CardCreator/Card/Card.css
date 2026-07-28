@@ -7,7 +7,7 @@
 
     overflow: hidden;
 
-    border-radius: 0px;
+    border-radius: 6px;
 }
 
 .card-background {
@@ -40,7 +40,7 @@
 
     border: inset;
 
-    border-color:  rgba(255, 255, 255, 0.432);
+    border-color: rgba(255, 255, 255, 0.233);
 
     overflow: hidden;
 }
@@ -66,8 +66,6 @@
 
     height: 100%;
 
-    border-radius: 2px;
-
     overflow: hidden;
 }
 
@@ -78,10 +76,11 @@
 
     left: 10%;
 
-    width: 80%;
+    width: 85%;
 
     height: 45%;
 }
+
 .artwork-area {
     position: absolute;
 
@@ -89,7 +88,7 @@
 
     left: 50%;
 
-    width: 85%;
+    width: 87%;
 
     height: 47%;
 
@@ -98,22 +97,22 @@
 
 .card-title {
     position: absolute;
-
-    top: 16px;
-
+    top: 18px;
     left: 25px;
-
     margin: 0;
 
     font-size: 1.2rem;
-
-    font-weight: 300;
-
+    font-weight: 700;
     font-family: monospace;
+    font-stretch: expanded;
+    color: #ffffff;
 
-    color: rgb(255, 255, 255);
-
-    text-shadow: 0 2px 4px black;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0 2px 4px rgba(0, 0, 0, 0.8);
 
     z-index: 5;
 }
@@ -128,10 +127,14 @@
     font-size: 0.55rem;
 
     font-style: italic;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0 2px 4px rgba(0, 0, 0, 0.8);
 
     color: rgb(255, 255, 255);
-
-    text-shadow: 0 2px 3px rgb(61, 61, 61);
 
     z-index: 5;
 }
@@ -139,12 +142,12 @@
 .type-bar {
     position: absolute;
 
-    left: 25px;
-    right: 25px;
+    left: 24px;
+    right: 24px;
 
-    top: 55%;
+    top: 55.3%;
 
-    height: 20px;
+    height: 15px;
 
     display: flex;
     align-items: center;
@@ -156,8 +159,12 @@
     padding-left: 10px;
 
     font-size: 0.75rem;
-
-    border: outset;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0 2px 4px rgba(0, 0, 0, 0.8);
 
     border-color: rgba(197, 197, 197, 0.137);
 }
@@ -170,15 +177,23 @@
 
     bottom: 25px;
 
-    height: 31%;
+    height: 32%;
 
-    background: white;
+    background: linear-gradient(
+        180deg,
+        rgb(255, 255, 255),
+        rgba(83, 83, 83, 0.801)
+    );
 
     padding: 10px;
 
-    font-size: 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: black;
 
     align-content: flex-start;
+
+    border-style: inset;
 }
 
 .gem-container {
@@ -186,11 +201,11 @@
     bottom: 4px;
     left: 50%;
     transform: translateX(-50%);
-    
+
     /* Grid aligns all gem root nodes to the exact same cell coordinate */
     display: grid;
     place-items: center;
-    
+
     /* Extra padding around container prevents clipped edges on 8-gem stacks */
     padding: 12px 36px;
     pointer-events: none;
@@ -201,52 +216,122 @@
     width: 28px;
     height: 38px;
     max-width: 100%;
-    
+
     /* Multi-layered drop shadow for clean visual separation between stones */
-    filter: 
-        drop-shadow(0 1px 1px rgba(0, 0, 0, 0.6))
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.6))
         drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3));
-        
+
     /* Pivot strictly from the bottom point where all gem tips converge */
     transform-origin: 50% 95%;
     will-change: transform;
 }
 
 /* Optional: Slight extra drop shadow intensity on Diamonds and Onyx to ground them */
-.gem-diamond, .gem-onyx {
-    filter: 
-        drop-shadow(0 1px 1px rgba(0, 0, 0, 0.8))
+.gem-diamond,
+.gem-onyx {
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.8))
         drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
 }
 
 .cost-display {
     position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 15;
 
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+
+    user-select: none;
+}
+
+.cost-display {
+    position: absolute;
+    top: 2px;
     right: -10px;
+    z-index: 15;
 
-    top: 50%;
-
-    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
 }
 
 .cost-circle {
-    width: 26px;
-
-    height: 26px;
-
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
 
     display: flex;
-
-    align-items: start;
-
+    align-items: center;
     justify-content: center;
 
-    font-weight: bold;
+    font-family: 'Cinzel', 'Times New Roman', monospace, serif;
+    font-size: 0.9rem;
+    font-weight: 900;
+    color: #ffffff;
 
-    color: white;
+    text-shadow:
+        0 1px 1px #000,
+        0 0 4px rgba(255, 255, 255, 0.6),
+        -1px -1px 0 #080b10,
+        1px -1px 0 #080b10,
+        -1px 1px 0 #080b10,
+        1px 1px 0 #080b10;
 
-    border: 2px solid white;
+    background-color: #5a6978;
+
+    border: 1.5px solid;
+    border-top-color: #d8e2ec;
+    border-left-color: #8a9bae;
+    border-right-color: #3b4654;
+    border-bottom-color: #1a222a;
+
+    box-shadow:
+        0 0 0 1px #080a0d,
+        0 3px 5px rgba(0, 0, 0, 0.75),
+        inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+        inset -3px -4px 6px rgba(0, 0, 0, 0.7),
+        inset 0 0 4px rgba(0, 0, 0, 0.4);
+
+    transition:
+        transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        filter 0.15s ease,
+        z-index 0s;
+}
+
+.cost-circle:not(:last-child) {
+    margin-bottom: -7px;
+}
+
+.cost-circle:nth-child(1) {
+    z-index: 10;
+}
+.cost-circle:nth-child(2) {
+    z-index: 9;
+}
+.cost-circle:nth-child(3) {
+    z-index: 8;
+}
+.cost-circle:nth-child(4) {
+    z-index: 7;
+}
+.cost-circle:nth-child(5) {
+    z-index: 6;
+}
+.cost-circle:nth-child(6) {
+    z-index: 5;
+}
+.cost-circle:nth-child(7) {
+    z-index: 4;
+}
+.cost-circle:nth-child(8) {
+    z-index: 3;
+}
+.cost-circle:nth-child(9) {
+    z-index: 2;
 }
 
 .empty-art {
@@ -260,7 +345,9 @@
 
     color: #000000;
 
-    background-color: #ffffff;
+    background: #ffffff;
+
+    background: radial-gradient(circle, #ffffff, #e0e0e0, #979797);
 }
 
 .artwork-frame img {
@@ -270,7 +357,11 @@
 
     object-fit: cover;
 
-    border: inset;
+    border: solid;
+
+    border-color: #000000;
+
+    border-radius: 2px;
 }
 
 .copyright-border {
@@ -301,4 +392,175 @@
     justify-content: center;
 
     align-items: center;
+}
+
+.damage-icon,
+.armor-icon {
+    /* Preserve exact positioning */
+    position: absolute;
+    bottom: 12px;
+    z-index: 10;
+
+    /* Sizing & Flex Alignment */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Typography */
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    font-weight: 900;
+    font-size: 1.55rem;
+    letter-spacing: -0.5px;
+    user-select: none;
+
+    /* Transparent parent allows pseudo-elements to layer behind text */
+    background: transparent;
+
+    /* Outer silhouette drop-shadow (clip-path ignores box-shadow) */
+    filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.85));
+}
+
+.damage-icon {
+    left: 28px;
+    color: #fff6e0;
+    text-shadow:
+        0 1px 1px #000,
+        0 0 4px rgba(255, 60, 0, 0.8),
+        -1px -1px 0 #3a0000,
+        1px -1px 0 #3a0000,
+        -1px 1px 0 #3a0000,
+        1px 1px 0 #3a0000;
+
+    clip-path: polygon(
+        50% 0%,
+        78% 22%,
+        100% 50%,
+        78% 78%,
+        50% 100%,
+        22% 78%,
+        0% 50%,
+        22% 22%
+    );
+}
+
+.damage-icon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: linear-gradient(
+        135deg,
+        #ffe875 0%,
+        #f2a600 35%,
+        #8f4f00 70%,
+        #ffdf73 100%
+    );
+    clip-path: inherit;
+}
+
+.damage-icon::after {
+    content: '';
+    position: absolute;
+    inset: 2.5px;
+    z-index: -1;
+    background: radial-gradient(
+        circle at 35% 30%,
+        #ff5a36 0%,
+        #b81200 55%,
+        #520000 100%
+    );
+    clip-path: inherit;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+.armor-icon {
+    right: 28px;
+    color: #ffffff;
+    text-shadow:
+        0 1px 1px #000,
+        0 0 4px rgba(0, 150, 255, 0.8),
+        -1px -1px 0 #001630,
+        1px -1px 0 #001630,
+        -1px 1px 0 #001630,
+        1px 1px 0 #001630;
+
+    clip-path: polygon(
+        50% 6%,
+        90% 0%,
+        100% 48%,
+        80% 85%,
+        50% 100%,
+        20% 85%,
+        0% 48%,
+        10% 0%
+    );
+}
+
+.armor-icon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #9bb0c1 40%,
+        #3b4856 75%,
+        #cbd8e4 100%
+    );
+    clip-path: inherit;
+}
+.armor-icon::after {
+    content: '';
+    position: absolute;
+    inset: 2.5px;
+    z-index: -1;
+    background: radial-gradient(
+        circle at 35% 30%,
+        #4ba3ff 0%,
+        #0d4bb3 55%,
+        #04163b 100%
+    );
+    clip-path: inherit;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+.stat-icon {
+    position: relative;
+    font-family: serif;
+    font-size: 1rem;
+    user-select: none;
+}
+
+.rarity-icon {
+    position: absolute;
+
+    top: 215px;
+    right: 2px;
+
+    width: 28px;
+    height: 28px;
+
+    fill: white;
+
+    filter:
+        drop-shadow(0 2px 2px black);
+}
+
+.common-icon {
+    background-image: url('/icons/common.svg');
+}
+
+.rare-icon {
+    background-image: url('/icons/rare.svg');
+}
+
+.epic-icon {
+    background-image: url('/icons/epic.svg');
+}
+
+.legendary-icon {
+    background-image: url('/icons/legendary.svg');
 }

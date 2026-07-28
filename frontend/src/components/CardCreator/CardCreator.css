@@ -1,7 +1,7 @@
 .editor-panel {
     width: 350px;
 
-    background: white;
+    background: rgb(92, 92, 92);
 
     padding: 2rem;
 
@@ -63,7 +63,7 @@
 
     padding: 2rem;
 
-    background: #b8b8b8;
+    background: #303033;
 
     border-radius: 1.5rem;
 

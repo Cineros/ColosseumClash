@@ -5,7 +5,6 @@ import CostEditor from './CostEditor';
 import TypeEditor from './TypeEditor';
 import MetadataEditor from './MetadataEditor';
 import './EditorPanel.css';
-import ExportButton from './ExportButton';
 
 interface Props {
     data: CardData;
@@ -13,7 +12,6 @@ interface Props {
 }
 
 export default function EditorPanel({ data, updateCard }: Props) {
-    
     return (
         <div className="editor-panel">
             {/* SECTION 1: CORE INFO */}
@@ -21,7 +19,29 @@ export default function EditorPanel({ data, updateCard }: Props) {
                 <header className="section-header">
                     <h2>Card Information</h2>
                 </header>
-                
+
+                <div className="field-group">
+                    <label>Card Type & Subtypes</label>
+                    <TypeEditor
+                        typeInfo={data.typeInfo}
+                        setTypeInfo={(typeInfo) =>
+                            updateCard((prev) => ({
+                                ...prev,
+                                typeInfo,
+                            }))
+                        }
+                        damage={data.damage}
+                        armor={data.armor}
+                        setCombatStats={(damage, armor) =>
+                            updateCard((prev) => ({
+                                ...prev,
+                                damage,
+                                armor,
+                            }))
+                        }
+                    />
+                </div>
+
                 <div className="field-group">
                     <label htmlFor="card-title">Title</label>
                     <input
@@ -69,6 +89,11 @@ export default function EditorPanel({ data, updateCard }: Props) {
                             updateCard((prev) => ({
                                 ...prev,
                                 colors,
+                                costs: prev.costs.filter(
+                                    (cost) =>
+                                        cost.color === 'generic' ||
+                                        colors.includes(cost.color),
+                                ),
                             }))
                         }
                     />
@@ -107,19 +132,6 @@ export default function EditorPanel({ data, updateCard }: Props) {
                         }
                     />
                 </div>
-
-                <div className="field-group">
-                    <label>Card Type & Subtypes</label>
-                    <TypeEditor
-                        typeInfo={data.typeInfo}
-                        setTypeInfo={(typeInfo) =>
-                            updateCard((prev) => ({
-                                ...prev,
-                                typeInfo,
-                            }))
-                        }
-                    />
-                </div>
             </section>
 
             {/* SECTION 4: FLAVOR & ABILITIES */}
@@ -150,7 +162,7 @@ export default function EditorPanel({ data, updateCard }: Props) {
                 <header className="section-header">
                     <h2>Set Metadata</h2>
                 </header>
-                
+
                 <MetadataEditor
                     metadata={data.metadata}
                     setMetadata={(metadata) =>

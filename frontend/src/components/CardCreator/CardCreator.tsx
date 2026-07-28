@@ -12,18 +12,18 @@ import CardPrintWrapper from './Card/CardPrintWrapper';
 const defaultCard: CardData = {
     title: 'Ancient Dragon',
 
-    artist: 'Alex Smith',
+    artist: 'John Smith',
 
     colors: ['red', 'blue', 'black'],
 
     costs: [
         {
             color: 'red',
-            amount: 3,
+            amount: 1,
         },
         {
             color: 'blue',
-            amount: 2,
+            amount: 1,
         },
         {
             color: 'black',
@@ -32,7 +32,7 @@ const defaultCard: CardData = {
     ],
 
     typeInfo: {
-        primary: 'Creature',
+        primary: 'Gladiator',
         secondary: 'Dragon',
         rarity: 'Legendary',
     },
@@ -44,7 +44,7 @@ const defaultCard: CardData = {
     metadata: {
         setName: 'First Edition',
         cardNumber: '001',
-        creator: 'Alex Smith',
+        creator: 'Colosseum Clash',
     },
     type: '',
 };
@@ -61,13 +61,12 @@ export default function CardCreator() {
                 <CardPrintWrapper>
                     <Card data={card} />
                 </CardPrintWrapper>
-                <ExportButton cardRef={cardRef} data={card} />
             </div>
 
             {/* Right side: controls */}
             <div className="editor-area">
+                <ExportButton cardRef={cardRef} data={card} />
                 <EditorPanel data={card} updateCard={setCard} />
-                
             </div>
         </div>
     );
