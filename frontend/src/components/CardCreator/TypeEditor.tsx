@@ -47,18 +47,18 @@ export default function TypeEditor({
     }
 
     return (
-        <div className="editor-section">
+        <div className='editor-section'>
             <h3>Type Information</h3>
 
             <label>Rarity</label>
 
             <select
                 value={typeInfo.rarity ?? ''}
-                onChange={(e) => updateField('rarity', e.target.value)}
+                onChange={e => updateField('rarity', e.target.value)}
             >
-                <option value="">Select rarity...</option>
+                <option value=''>Select rarity...</option>
 
-                {RARITY_OPTIONS.map((rarity) => (
+                {RARITY_OPTIONS.map(rarity => (
                     <option key={rarity} value={rarity}>
                         {rarity}
                     </option>
@@ -69,41 +69,51 @@ export default function TypeEditor({
 
             <select
                 value={typeInfo.primary}
-                onChange={(e) => {
+                onChange={e => {
                     const primary = e.target.value;
-
-                    updateField('primary', primary);
 
                     if (primary !== 'Gladiator') {
                         setCombatStats(undefined, undefined);
                     }
+                    updateField('primary', primary);
                 }}
             >
-                <option value="">Select primary type...</option>
+                <option value=''>Select primary type...</option>
 
-                {PRIMARY_TYPE_OPTIONS.map((type) => (
+                {PRIMARY_TYPE_OPTIONS.map(type => (
                     <option key={type} value={type}>
                         {type}
                     </option>
                 ))}
             </select>
 
-            <label>Tribe</label>
+            {typeInfo.primary === 'Special' && (
+                <>
+                    <label>Speed</label>
 
-            <input
-                value={typeInfo.tribe ?? ''}
-                onChange={(e) => updateField('tribe', e.target.value)}
-            />
+                    <input
+                        type='number'
+                        min='0'
+                        value={typeInfo.speed ?? ''}
+                        onChange={e => updateField('speed', e.target.value)}
+                    />
+                </>
+            )}
 
             {typeInfo.primary === 'Gladiator' && (
                 <>
+                    <label>Tribe</label>
+                    <input
+                        value={typeInfo.tribe ?? ''}
+                        onChange={e => updateField('tribe', e.target.value)}
+                    />
                     <label>Attack</label>
 
                     <input
-                        type="number"
-                        min="0"
+                        type='number'
+                        min='0'
                         value={damage ?? ''}
-                        onChange={(e) =>
+                        onChange={e =>
                             setCombatStats(Number(e.target.value), armor)
                         }
                     />
@@ -111,10 +121,10 @@ export default function TypeEditor({
                     <label>Armor</label>
 
                     <input
-                        type="number"
-                        min="0"
+                        type='number'
+                        min='0'
                         value={armor ?? ''}
-                        onChange={(e) =>
+                        onChange={e =>
                             setCombatStats(damage, Number(e.target.value))
                         }
                     />

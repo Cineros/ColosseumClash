@@ -5,19 +5,21 @@ interface Props {
 }
 
 export default function TypeBar({ typeInfo }: Props) {
-    const showSecondary =
-        typeInfo.primary === 'Gladiator' ||
-        typeInfo.primary === 'Special';
-
     return (
-        <div className="type-bar">
+        <div className='type-bar'>
             <span>
                 {typeInfo.primary}
 
-                {showSecondary && typeInfo.tribe && (
+                {typeInfo.primary === 'Gladiator' && typeInfo.tribe && (
                     <>
                         {' — '}
                         {typeInfo.tribe}
+                    </>
+                )}
+                {typeInfo.primary === 'Special' && typeInfo.speed && (
+                    <>
+                        {' — Speed: '}
+                        {typeInfo.speed}
                     </>
                 )}
             </span>

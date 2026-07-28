@@ -191,7 +191,8 @@
     font-weight: 600;
     color: black;
 
-    align-content: flex-start;
+    align-content: start;
+    text-align: left;
 
     border-style: inset;
 }
@@ -545,8 +546,7 @@
 
     fill: white;
 
-    filter:
-        drop-shadow(0 2px 2px black);
+    filter: drop-shadow(0 2px 2px black);
 }
 
 .common-icon {
