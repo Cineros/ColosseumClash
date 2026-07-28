@@ -33,7 +33,7 @@ const defaultCard: CardData = {
 
     typeInfo: {
         primary: 'Gladiator',
-        secondary: 'Dragon',
+        tribe: 'Dragon',
         rarity: 'Legendary',
     },
 
@@ -44,7 +44,7 @@ const defaultCard: CardData = {
     metadata: {
         setName: 'First Edition',
         cardNumber: '001',
-        creator: 'Colosseum Clash',
+        creator: 'John Smith',
     },
     type: '',
 };
@@ -55,7 +55,7 @@ export default function CardCreator() {
     const cardRef = useRef<HTMLDivElement>(null);
 
     return (
-        <div className="card-creator-page">
+        <div className='card-creator-page'>
             {/* Left side: live card preview */}
             <div ref={cardRef}>
                 <CardPrintWrapper>
@@ -64,7 +64,7 @@ export default function CardCreator() {
             </div>
 
             {/* Right side: controls */}
-            <div className="editor-area">
+            <div className='editor-area'>
                 <ExportButton cardRef={cardRef} data={card} />
                 <EditorPanel data={card} updateCard={setCard} />
             </div>

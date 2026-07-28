@@ -10,30 +10,26 @@ export type CardColor =
     | 'gray';
 
 export interface CardCost {
-  color: CardColor;
-  amount: number;
+    color: CardColor;
+    amount: number;
 }
-
 
 export interface CardTypeInfo {
+    primary: string;
 
-  primary: string;
+    tribe?: string;
 
-  tribe?: string;
+    rarity?: string;
 
-  rarity?: string;
-
+    speed?: string;
 }
 
-
 export interface CardMetadata {
+    setName?: string;
 
-  setName?: string;
+    cardNumber?: string;
 
-  cardNumber?: string;
-
-  creator?: string;
-
+    creator?: string;
 }
 
 export interface CardData {

@@ -22,7 +22,7 @@ interface Props {
 
 export default function Card({ data }: Props) {
     return (
-        <div className="card">
+        <div className='card'>
             <CardBackground />
 
             <InnerFrame colors={data.colors} />
@@ -31,7 +31,7 @@ export default function Card({ data }: Props) {
 
             <Artist>{data.artist}</Artist>
 
-            <div className="artwork-area">
+            <div className='artwork-area'>
                 <ArtworkFrame artwork={data.artwork} />
 
                 <CostDisplay costs={data.costs} />
@@ -46,7 +46,7 @@ export default function Card({ data }: Props) {
             <DescriptionBox>{data.description}</DescriptionBox>
 
             <CopyrightBorder
-                text={`© ${data.metadata?.creator ?? 'Creator'}`}
+                text={`© Coloseum Clash | Created by: ${data.metadata?.creator ?? 'Creator'}`}
             />
 
             {data.typeInfo.primary === 'Gladiator' && (

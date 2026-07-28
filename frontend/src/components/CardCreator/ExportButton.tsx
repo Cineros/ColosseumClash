@@ -61,5 +61,9 @@ export default function ExportButton({ cardRef, data }: Props) {
         }
     }
 
-    return <button onClick={exportCard}>Export PNG</button>;
+    return (
+        <button id='export-button' onClick={exportCard}>
+            Export PNG
+        </button>
+    );
 }
