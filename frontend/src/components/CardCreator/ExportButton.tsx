@@ -20,24 +20,18 @@ export default function ExportButton({ cardRef, data }: Props) {
             return;
         }
 
-        if (!cardRef.current) {
-            return;
-        }
+        const card = cardRef.current;
+
+        if (!card) return;
 
         try {
-            const image = await toPng(
-                cardRef.current,
-
-                {
-                    width: 750,
-
-                    height: 1050,
-
-                    pixelRatio: 6,
-
-                    cacheBust: true,
-                },
-            );
+            const image = await toPng(cardRef.current, {
+                width: cardRef.current.offsetWidth,
+                height: cardRef.current.offsetHeight,
+                canvasWidth: 3000,
+                canvasHeight: 4200,
+                cacheBust: true,
+            });
 
             const filename = data.title
 
@@ -62,7 +56,7 @@ export default function ExportButton({ cardRef, data }: Props) {
     }
 
     return (
-        <button id='export-button' onClick={exportCard}>
+        <button id="export-button" onClick={exportCard}>
             Export PNG
         </button>
     );

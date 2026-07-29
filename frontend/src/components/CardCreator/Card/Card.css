@@ -386,14 +386,9 @@
 }
 
 .card-print-wrapper {
-    width: 100%;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
+    display: inline-flex;
 }
+
 
 .damage-icon,
 .armor-icon {

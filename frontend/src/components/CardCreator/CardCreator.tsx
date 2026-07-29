@@ -55,16 +55,18 @@ export default function CardCreator() {
     const cardRef = useRef<HTMLDivElement>(null);
 
     return (
-        <div className='card-creator-page'>
+        <div className="card-creator-page">
             {/* Left side: live card preview */}
-            <div ref={cardRef}>
+            <div>
                 <CardPrintWrapper>
-                    <Card data={card} />
+                    <div ref={cardRef}>
+                        <Card data={card} />
+                    </div>
                 </CardPrintWrapper>
             </div>
 
             {/* Right side: controls */}
-            <div className='editor-area'>
+            <div className="editor-area">
                 <ExportButton cardRef={cardRef} data={card} />
                 <EditorPanel data={card} updateCard={setCard} />
             </div>
