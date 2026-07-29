@@ -8,6 +8,7 @@ const RARITY_OPTIONS = [
     'Backroom Rare',
     'Imported Rare',
     'Illicit Rare',
+    'Jackpot Rare',
 ];
 
 const PRIMARY_TYPE_OPTIONS = [
