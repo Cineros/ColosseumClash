@@ -53,4 +53,6 @@ export interface CardData {
     damage?: number;
 
     armor?: number;
+
+    health?: number;
 }

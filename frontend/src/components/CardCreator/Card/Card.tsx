@@ -15,6 +15,7 @@ import CopyrightBorder from './CopyrightBorder';
 import DamageIcon from './DamageIcon';
 import ArmorIcon from './ArmorIcon';
 import RarityIcon from './RarityIcon';
+import ChampionHealth from './ChampionHealth';
 
 interface Props {
     data: CardData;
@@ -22,7 +23,7 @@ interface Props {
 
 export default function Card({ data }: Props) {
     return (
-        <div className='card'>
+        <div className="card">
             <CardBackground />
 
             <InnerFrame colors={data.colors} />
@@ -31,10 +32,14 @@ export default function Card({ data }: Props) {
 
             <Artist>{data.artist}</Artist>
 
-            <div className='artwork-area'>
+            <div className="artwork-area">
                 <ArtworkFrame artwork={data.artwork} />
 
-                <CostDisplay costs={data.costs} />
+                {data.typeInfo.primary !== 'Champion' && (
+                    <>
+                        <CostDisplay costs={data.costs} />
+                    </>
+                )}
 
                 {data.typeInfo.rarity && (
                     <RarityIcon rarity={data.typeInfo.rarity} />
@@ -46,7 +51,7 @@ export default function Card({ data }: Props) {
             <DescriptionBox>{data.description}</DescriptionBox>
 
             <CopyrightBorder
-                text={`© Coloseum Clash | Created by: ${data.metadata?.creator ?? 'Creator'}`}
+                text={`© Colosseum Clash | Created by: ${data.metadata?.creator ?? 'Creator'}`}
             />
 
             {data.typeInfo.primary === 'Gladiator' && (
@@ -54,6 +59,11 @@ export default function Card({ data }: Props) {
                     <DamageIcon value={data.damage} />
 
                     <ArmorIcon value={data.armor} />
+                </>
+            )}
+            {data.typeInfo.primary === 'Champion' && (
+                <>
+                    <ChampionHealth health={data.health} />
                 </>
             )}
 

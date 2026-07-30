@@ -22,22 +22,28 @@ const PRIMARY_TYPE_OPTIONS = [
 
 interface Props {
     typeInfo: CardTypeInfo;
-
-    setTypeInfo: (typeInfo: CardTypeInfo) => void;
-
+    
     damage?: number;
 
     armor?: number;
 
+    health?: number;
+
+    setTypeInfo: (typeInfo: CardTypeInfo) => void;
+
     setCombatStats: (damage?: number, armor?: number) => void;
+
+    setChampionHealth: (health?: number) => void;
 }
 
 export default function TypeEditor({
     typeInfo,
-    setTypeInfo,
     damage,
     armor,
+    health,
+    setTypeInfo,
     setCombatStats,
+    setChampionHealth,
 }: Props) {
     function updateField(field: keyof CardTypeInfo, value: string) {
         setTypeInfo({
@@ -48,18 +54,18 @@ export default function TypeEditor({
     }
 
     return (
-        <div className='editor-section'>
+        <div className="editor-section">
             <h3>Type Information</h3>
 
             <label>Rarity</label>
 
             <select
                 value={typeInfo.rarity ?? ''}
-                onChange={e => updateField('rarity', e.target.value)}
+                onChange={(e) => updateField('rarity', e.target.value)}
             >
-                <option value=''>Select rarity...</option>
+                <option value="">Select rarity...</option>
 
-                {RARITY_OPTIONS.map(rarity => (
+                {RARITY_OPTIONS.map((rarity) => (
                     <option key={rarity} value={rarity}>
                         {rarity}
                     </option>
@@ -70,18 +76,21 @@ export default function TypeEditor({
 
             <select
                 value={typeInfo.primary}
-                onChange={e => {
+                onChange={(e) => {
                     const primary = e.target.value;
 
                     if (primary !== 'Gladiator') {
                         setCombatStats(undefined, undefined);
                     }
+                    if (primary !== 'Champion') {
+                        setChampionHealth(undefined);
+                    }
                     updateField('primary', primary);
                 }}
             >
-                <option value=''>Select primary type...</option>
+                <option value="">Select primary type...</option>
 
-                {PRIMARY_TYPE_OPTIONS.map(type => (
+                {PRIMARY_TYPE_OPTIONS.map((type) => (
                     <option key={type} value={type}>
                         {type}
                     </option>
@@ -93,10 +102,10 @@ export default function TypeEditor({
                     <label>Speed</label>
 
                     <input
-                        type='number'
-                        min='0'
+                        type="number"
+                        min="0"
                         value={typeInfo.speed ?? ''}
-                        onChange={e => updateField('speed', e.target.value)}
+                        onChange={(e) => updateField('speed', e.target.value)}
                     />
                 </>
             )}
@@ -106,15 +115,15 @@ export default function TypeEditor({
                     <label>Tribe</label>
                     <input
                         value={typeInfo.tribe ?? ''}
-                        onChange={e => updateField('tribe', e.target.value)}
+                        onChange={(e) => updateField('tribe', e.target.value)}
                     />
                     <label>Attack</label>
 
                     <input
-                        type='number'
-                        min='0'
+                        type="number"
+                        min="0"
                         value={damage ?? ''}
-                        onChange={e =>
+                        onChange={(e) =>
                             setCombatStats(Number(e.target.value), armor)
                         }
                     />
@@ -122,11 +131,25 @@ export default function TypeEditor({
                     <label>Armor</label>
 
                     <input
-                        type='number'
-                        min='0'
+                        type="number"
+                        min="0"
                         value={armor ?? ''}
-                        onChange={e =>
+                        onChange={(e) =>
                             setCombatStats(damage, Number(e.target.value))
+                        }
+                    />
+                </>
+            )}
+
+            {typeInfo.primary === 'Champion' && (
+                <>
+                    <label>Health</label>
+                    <input
+                        type="number"
+                        min="0"
+                        value={health ?? ''}
+                        onChange={(e) =>
+                            setChampionHealth(Number(e.target.value))
                         }
                     />
                 </>
