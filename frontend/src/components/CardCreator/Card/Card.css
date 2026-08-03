@@ -389,55 +389,49 @@
     display: inline-flex;
 }
 
-.damage-icon,
-.armor-icon {
-    /* Preserve exact positioning */
+.gem-icon {
     position: absolute;
     bottom: 16px;
     z-index: 10;
-
-    /* Sizing & Flex Alignment */
-    width: 65px;
-    height: 65px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: transparent;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.9));
+}
 
-    /* Typography */
+.gem-text {
     font-family: 'Cinzel', 'Times New Roman', serif;
     font-weight: 900;
-    font-size: 2rem;
+    font-size: 1.7rem;
     letter-spacing: -0.5px;
     user-select: none;
-
-    /* Transparent parent allows pseudo-elements to layer behind text */
-    background: transparent;
-
-    /* Outer silhouette drop-shadow (clip-path ignores box-shadow) */
-    filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.85));
+    z-index: 2;
+    transform-origin: center center;
+    transition: transform 0.2s ease-in-out;
 }
 
 .damage-icon {
     left: 28px;
-    color: #fff6e0;
+    
+    clip-path: polygon(
+        50% 0%, 65% 22%, 95% 15%, 75% 42%, 
+        100% 70%, 68% 68%, 50% 100%, 32% 68%, 
+        0% 70%, 25% 42%, 5% 15%, 35% 22%
+    );
+}
+
+.damage-icon .gem-text {
+    color: #fff4e6;
     text-shadow:
         0 1px 1px #000,
-        0 0 4px rgba(255, 60, 0, 0.8),
-        -1px -1px 0 #3a0000,
-        1px -1px 0 #3a0000,
-        -1px 1px 0 #3a0000,
-        1px 1px 0 #3a0000;
-
-    clip-path: polygon(
-        50% 0%,
-        78% 22%,
-        100% 50%,
-        78% 78%,
-        50% 100%,
-        22% 78%,
-        0% 50%,
-        22% 22%
-    );
+        0 0 4px rgba(255, 60, 0, 1),
+        -1px -1px 0 #4a0000,
+        1px -1px 0 #4a0000,
+        -1px 1px 0 #4a0000,
+        1px 1px 0 #4a0000;
 }
 
 .damage-icon::before {
@@ -445,52 +439,51 @@
     position: absolute;
     inset: 0;
     z-index: -2;
-    background: linear-gradient(
-        135deg,
-        #ffe875 0%,
-        #f2a600 35%,
-        #8f4f00 70%,
-        #ffdf73 100%
-    );
+    background: linear-gradient(135deg, #ffe875 0%, #fff6ad 25%, #8f4f00 50%, #ffdf73 80%, #5c3200 100%);
     clip-path: inherit;
 }
 
 .damage-icon::after {
     content: '';
     position: absolute;
-    inset: 2.5px;
+    inset: 3px; /* Thickness of the gold bezel */
     z-index: -1;
-    background: radial-gradient(
-        circle at 35% 30%,
-        #ff5a36 0%,
-        #b81200 55%,
-        #520000 100%
-    );
     clip-path: inherit;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.9);
+    background: 
+        /* Sharp Top-Left Edge Highlight */
+        linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.1) 20%, transparent 20%),
+        /* Inner Top Highlight Facet */
+        linear-gradient(180deg, rgba(255, 200, 150, 0.6) 0%, transparent 35%),
+        /* Bottom-Right Deep Shadow Crevice */
+        linear-gradient(-45deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 35%),
+        /* Hard-Stop Conic Facets (Creates the brilliant center cut) */
+        conic-gradient(from 15deg at 50% 50%, 
+            #ff2a00 0deg 45deg, 
+            #7a0000 45deg 90deg, 
+            #ff7b00 90deg 135deg, 
+            #3d0000 135deg 180deg, 
+            #e61500 180deg 225deg, 
+            #8f0000 225deg 270deg, 
+            #ff5500 270deg 315deg, 
+            #4a0000 315deg 360deg
+        );
 }
 
 .armor-icon {
     right: 28px;
+    clip-path: polygon(50% 0%, 95% 15%, 95% 65%, 50% 100%, 5% 65%, 5% 15%);
+}
+
+.armor-icon .gem-text {
     color: #ffffff;
     text-shadow:
         0 1px 1px #000,
-        0 0 4px rgba(0, 150, 255, 0.8),
+        0 0 4px rgba(0, 150, 255, 0.9),
         -1px -1px 0 #001630,
         1px -1px 0 #001630,
         -1px 1px 0 #001630,
         1px 1px 0 #001630;
-
-    clip-path: polygon(
-        50% 6%,
-        90% 0%,
-        100% 48%,
-        80% 85%,
-        50% 100%,
-        20% 85%,
-        0% 48%,
-        10% 0%
-    );
 }
 
 .armor-icon::before {
@@ -498,28 +491,49 @@
     position: absolute;
     inset: 0;
     z-index: -2;
-    background: linear-gradient(
-        135deg,
-        #ffffff 0%,
-        #9bb0c1 40%,
-        #3b4856 75%,
-        #cbd8e4 100%
-    );
+    background: linear-gradient(135deg, #ffffff 0%, #d1dce6 25%, #3b4856 50%, #cbd8e4 80%, #1c232a 100%);
     clip-path: inherit;
 }
+
 .armor-icon::after {
     content: '';
     position: absolute;
-    inset: 2.5px;
+    inset: 3px; 
     z-index: -1;
-    background: radial-gradient(
-        circle at 35% 30%,
-        #4ba3ff 0%,
-        #0d4bb3 55%,
-        #04163b 100%
-    );
     clip-path: inherit;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.9);
+    background: 
+        /* Flat Top Table Facet Highlight */
+        linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.15) 15%, transparent 15%),
+        /* Sharp Top-Left Corner Facet */
+        linear-gradient(110deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.2) 20%, transparent 20%),
+        /* Top-Right Edge Shadow */
+        linear-gradient(-110deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 25%, transparent 25%),
+        /* Deep Bottom Point Shadow */
+        linear-gradient(-45deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 35%, transparent 35%),
+        /* Bottom-Left Ambient Reflection */
+        linear-gradient(45deg, rgba(100, 180, 255, 0.4) 0%, transparent 35%),
+        /* Main Hard-Stop Conic Cut for Brilliant Center */
+        conic-gradient(from 0deg at 50% 35%, 
+            #020e29 0deg 60deg, 
+            #3a8df5 60deg 120deg, 
+            #082459 120deg 180deg, 
+            #155bd4 180deg 240deg, 
+            #4a9cff 240deg 300deg, 
+            #020e29 300deg 360deg
+        );
+}
+.damage-icon .gem-text {
+    /* If it looks too low, use a negative margin-top. 
+       Adjust this value by 1-2px until it feels perfect. */
+    margin-top: -6px; 
+    margin-right: 2px;
+}
+.armor-icon .gem-text {
+    /* The shield is bottom-heavy (points down), so the text needs to move UP 
+       to sit in the widest part of the gem. */
+    margin-top: -6px; 
+    margin-left: -1px;
 }
 
 .stat-icon {
@@ -561,8 +575,8 @@
 
 .health-box-wrapper {
     position: absolute;
-    bottom: 22px;
-    left: 22px;
+    bottom: 235px;
+    left: 20px;
     z-index: 15;
 
     display: flex;
@@ -572,7 +586,7 @@
     width: 96px; 
     height: 85px;
     
-    filter: drop-shadow(0px 8px 10px rgba(0, 0, 0, 0.8));
+    filter: drop-shadow(0px 8px 10px rgba(255, 255, 255, 0.589));
     
     transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

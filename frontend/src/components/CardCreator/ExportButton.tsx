@@ -72,7 +72,10 @@ export default function ExportButton({ cardRef, data }: Props) {
                 height: card.offsetHeight,
                 canvasWidth: 750,
                 canvasHeight: 1050,
-                cacheBust: true,
+                skipFonts: false, 
+                fetchRequestInit: {
+                    mode: 'no-cors' // Helps bypass strict CORS on some browsers
+                }
             });
 
             const img = new Image();

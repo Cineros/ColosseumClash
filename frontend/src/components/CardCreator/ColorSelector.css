@@ -1,39 +1,20 @@
-.card-creator-page {
-  min-height: calc(100vh - 140px);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  gap: 3rem;
-
-  padding: 3rem;
-  background: #f3f4f6;
+.color-selector {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    justify-items: center;
+    align-items: center;
 }
 
-
-.card-preview-area {
-  display: flex;
-  justify-content: center;
+.color-selector > :first-child {
+    grid-column: span 4;
 }
-
-
-.editor-placeholder {
-  width: 350px;
-
-  background: white;
-  padding: 2rem;
-
-  border-radius: 1rem;
-
-  border: 1px solid #e5e7eb;
-}
-
-
-@media(max-width:900px){
-
-  .card-creator-page {
-    flex-direction: column;
-  }
-
+ 
+@media (max-width: 900px) {
+    .color-selector {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .color-selector > :first-child {
+        grid-column: span 1;
+    }
 }
