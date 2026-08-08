@@ -109,9 +109,6 @@ export default function ExportButton({ cardRef, data }: Props) {
             const top = bleed;
             const bottom = bleed + trimHeight;
 
-            //
-            // Draw rounded card
-            //
             ctx.save();
 
             ctx.beginPath();
@@ -122,9 +119,6 @@ export default function ExportButton({ cardRef, data }: Props) {
 
             ctx.restore();
 
-            //
-            // Draw dashed trim guide
-            //
             ctx.save();
 
             ctx.strokeStyle = '#fff';
@@ -139,9 +133,6 @@ export default function ExportButton({ cardRef, data }: Props) {
 
             ctx.restore();
 
-            //
-            // Draw crop marks
-            //
             const mark = 20;
             const offset = 12;
 
@@ -152,25 +143,21 @@ export default function ExportButton({ cardRef, data }: Props) {
             ctx.lineCap = 'round';
             ctx.setLineDash([]);
 
-            // Top Left
             ctx.moveTo(left - offset, top);
             ctx.lineTo(left - offset - mark, top);
             ctx.moveTo(left, top - offset);
             ctx.lineTo(left, top - offset - mark);
 
-            // Top Right
             ctx.moveTo(right + offset, top);
             ctx.lineTo(right + offset + mark, top);
             ctx.moveTo(right, top - offset);
             ctx.lineTo(right, top - offset - mark);
 
-            // Bottom Left
             ctx.moveTo(left - offset, bottom);
             ctx.lineTo(left - offset - mark, bottom);
             ctx.moveTo(left, bottom + offset);
             ctx.lineTo(left, bottom + offset + mark);
 
-            // Bottom Right
             ctx.moveTo(right + offset, bottom);
             ctx.lineTo(right + offset + mark, bottom);
             ctx.moveTo(right, bottom + offset);

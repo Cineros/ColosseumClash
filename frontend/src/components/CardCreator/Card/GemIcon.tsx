@@ -14,7 +14,6 @@ interface GemProfile {
     glintOpacity: number;
 }
 
-// 1. Define the strict canonical display order
 const CANONICAL_ORDER: Exclude<CardColor, 'generic'>[] = [
     'red',    // Ruby
     'blue',   // Sapphire
@@ -26,7 +25,6 @@ const CANONICAL_ORDER: Exclude<CardColor, 'generic'>[] = [
     'gray',   // Diamond
 ];
 
-// Map each color to its authentic gemstone visual profile
 const GEM_PROFILES: Record<Exclude<CardColor, 'generic'>, GemProfile> = {
     red: {
         name: 'Ruby',
@@ -95,7 +93,6 @@ const GEM_PROFILES: Record<Exclude<CardColor, 'generic'>, GemProfile> = {
 };
 
 export default function GemIcon({ colors }: Props) {
-    // 2. Filter out 'generic' AND sort by the canonical gemstone order
     const visibleColors = colors
         .filter((c): c is Exclude<CardColor, 'generic'> => c !== 'generic')
         .sort((a, b) => CANONICAL_ORDER.indexOf(a) - CANONICAL_ORDER.indexOf(b));
@@ -116,7 +113,6 @@ export default function GemIcon({ colors }: Props) {
                 const gradId = `gem-grad-${index}-${color}`;
                 const glintId = `gem-glint-${index}-${color}`;
 
-                // --- COMPOUND PEACOCK FAN ALGORITHM ---
                 const offset = index - (total - 1) / 2;
                 const maxRotateStep = total <= 3 ? 16 : Math.min(12, 80 / total);
                 const maxXStep = total <= 3 ? 12 : Math.min(14, 90 / total);

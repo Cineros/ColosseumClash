@@ -12,8 +12,6 @@ export default function ArtworkFrame({ artwork }: Props) {
             setImgSrc(null);
             return;
         }
-
-        // If the artwork is already a Base64 string, just use it
         if (artwork.startsWith('data:')) {
             setImgSrc(artwork);
             return;
@@ -21,8 +19,6 @@ export default function ArtworkFrame({ artwork }: Props) {
 
         let isMounted = true;
 
-        // Fetch the image (whether it's a local blob or external URL) 
-        // and convert it into a Base64 Data URL to prevent html-to-image cloning errors.
         fetch(artwork)
             .then((response) => response.blob())
             .then((blob) => {
@@ -52,7 +48,6 @@ export default function ArtworkFrame({ artwork }: Props) {
                 <img 
                     src={imgSrc} 
                     alt="Card artwork" 
-                    // No crossOrigin attribute needed anymore since it is safely encoded!
                 />
             ) : (
                 <div className="empty-art">Artwork</div>

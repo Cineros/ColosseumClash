@@ -56,7 +56,6 @@ export default function CardCreator() {
 
     return (
         <div className="card-creator-page">
-            {/* Left side: live card preview */}
             <div>
                 <CardPrintWrapper>
                     <div ref={cardRef}>
@@ -65,7 +64,6 @@ export default function CardCreator() {
                 </CardPrintWrapper>
             </div>
 
-            {/* Right side: controls */}
             <div className="editor-area">
                 <ExportButton cardRef={cardRef} data={card} />
                 <EditorPanel data={card} updateCard={setCard} />

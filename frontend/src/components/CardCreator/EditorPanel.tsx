@@ -14,7 +14,6 @@ interface Props {
 export default function EditorPanel({ data, updateCard }: Props) {
     return (
         <div className="editor-panel">
-            {/* SECTION 1: CORE INFO */}
             <section className="editor-section">
                 <header className="section-header">
                     <h2>Card Information</h2>
@@ -80,7 +79,6 @@ export default function EditorPanel({ data, updateCard }: Props) {
                 </div>
             </section>
 
-            {/* SECTION 2: APPEARANCE & ART */}
             <section className="editor-section">
                 <header className="section-header">
                     <h2>Appearance</h2>
@@ -118,7 +116,6 @@ export default function EditorPanel({ data, updateCard }: Props) {
                 </div>
             </section>
 
-            {/* SECTION 3: GAME MECHANICS */}
             <section className="editor-section">
                 <header className="section-header">
                     <h2>Game Data</h2>
@@ -139,7 +136,6 @@ export default function EditorPanel({ data, updateCard }: Props) {
                 </div>
             </section>
 
-            {/* SECTION 4: FLAVOR & ABILITIES */}
             <section className="editor-section">
                 <header className="section-header">
                     <h2>Description & Abilities</h2>
@@ -162,7 +158,6 @@ export default function EditorPanel({ data, updateCard }: Props) {
                 </div>
             </section>
 
-            {/* SECTION 5: METADATA & SET INFO */}
             <section className="editor-section">
                 <header className="section-header">
                     <h2>Set Metadata</h2>

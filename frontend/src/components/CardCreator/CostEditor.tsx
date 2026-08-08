@@ -21,7 +21,6 @@ const CANONICAL_ORDER: CardColor[] = [
 ];
 
 export default function CostEditor({ colors, costs, setCosts }: Props) {
-    // 1. Combine 'generic', currently selected frame colors, and any already-saved cost colors
     const sortedColors = [...colors].sort(
         (a, b) => CANONICAL_ORDER.indexOf(a) - CANONICAL_ORDER.indexOf(b),
     );
@@ -48,8 +47,7 @@ export default function CostEditor({ colors, costs, setCosts }: Props) {
                 },
             ];
         }
-
-        // 3. Keep the saved state array sorted by canonical order as well
+        
         nextCosts.sort(
             (a, b) =>
                 CANONICAL_ORDER.indexOf(a.color) -

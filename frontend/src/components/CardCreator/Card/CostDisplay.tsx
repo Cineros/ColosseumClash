@@ -19,7 +19,6 @@ const CANONICAL_ORDER: CardColor[] = [
 ];
 
 export default function CostDisplay({ costs }: Props) {
-    // 1. Filter out unselected, zero, null, or empty string costs
     const validCosts = costs.filter((cost) => {
         return (
             cost.amount !== undefined &&
@@ -30,12 +29,10 @@ export default function CostDisplay({ costs }: Props) {
         );
     });
 
-    // 2. If no valid colors/costs remain, do not render the container at all
     if (validCosts.length === 0) {
         return null;
     }
 
-    // 3. Sort the remaining valid costs by canonical order
     const sortedCosts = [...validCosts].sort(
         (a, b) =>
             CANONICAL_ORDER.indexOf(a.color) - CANONICAL_ORDER.indexOf(b.color),

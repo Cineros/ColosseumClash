@@ -13,7 +13,6 @@
     flex-direction: column;
     gap: 1.25rem;
 
-    /* Smooth ambient shadow to separate panel from workspace background */
     box-shadow:
         0 4px 6px -1px rgba(0, 0, 0, 0.05),
         0 10px 15px -3px rgba(0, 0, 0, 0.08);
@@ -34,14 +33,12 @@
     background: #94a3b8;
 }
 
-/* --- SECTION CARDS --- */
 .editor-section {
     background: #ffffff;
     padding: 1.25rem;
     border-radius: 12px;
     border: 1px solid #f1f5f9;
 
-    /* Crisp drop shadow with micro-transition on hover */
     box-shadow:
         0 1px 3px 0 rgba(0, 0, 0, 0.05),
         0 1px 2px -1px rgba(0, 0, 0, 0.05);
@@ -61,7 +58,6 @@
         0 2px 4px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* --- SECTION HEADERS WITH ACCENT BAR --- */
 .section-header {
     display: flex;
     align-items: center;
@@ -84,7 +80,6 @@
     line-height: 1;
 }
 
-/* --- FIELD GROUPS & TYPOGRAPHY --- */
 .field-group {
     display: flex;
     flex-direction: column;
@@ -100,7 +95,6 @@
     margin-left: 2px;
 }
 
-/* --- INPUTS & TEXTAREAS --- */
 .editor-section input[type='text'],
 .editor-section input[type='number'],
 .editor-section textarea {
@@ -124,14 +118,12 @@
     color: #94a3b8;
 }
 
-/* Focus Glow Effects */
 .editor-section input:focus,
 .editor-section textarea:focus {
     border-color: #3b82f6;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
-/* Textarea Ergonomics */
 .editor-section textarea {
     resize: vertical;
     min-height: 90px;
