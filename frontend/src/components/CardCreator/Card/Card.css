@@ -7,7 +7,7 @@
 
     overflow: hidden;
 
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
 .card-background {
@@ -237,11 +237,9 @@
     left: 50%;
     transform: translateX(-50%);
 
-    /* Grid aligns all gem root nodes to the exact same cell coordinate */
     display: grid;
     place-items: center;
 
-    /* Extra padding around container prevents clipped edges on 8-gem stacks */
     padding: 12px 36px;
     pointer-events: none;
 }
@@ -252,34 +250,17 @@
     height: 38px;
     max-width: 100%;
 
-    /* Multi-layered drop shadow for clean visual separation between stones */
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.6))
         drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3));
 
-    /* Pivot strictly from the bottom point where all gem tips converge */
     transform-origin: 50% 95%;
     will-change: transform;
 }
 
-/* Optional: Slight extra drop shadow intensity on Diamonds and Onyx to ground them */
 .gem-diamond,
 .gem-onyx {
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.8))
         drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
-}
-
-.cost-display {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    z-index: 15;
-
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: center;
-
-    user-select: none;
 }
 
 .cost-display {
@@ -290,6 +271,7 @@
 
     display: flex;
     flex-direction: column;
+    gap: 8px;
     align-items: center;
     user-select: none;
 }
@@ -316,7 +298,22 @@
         -1px 1px 0 #080b10,
         1px 1px 0 #080b10;
 
-    background-color: #5a6978;
+    background-color: #5a6978; 
+
+    background-image: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.1) 30%, rgba(255, 255, 255, 0) 50%),
+        linear-gradient(to top right, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0.6) 100%),
+        conic-gradient(from 22.5deg at 50% 50%,
+            rgba(255, 255, 255, 0.15) 0deg 45deg,
+            rgba(0, 0, 0, 0.15) 45deg 90deg,
+            rgba(255, 255, 255, 0.15) 90deg 135deg,
+            rgba(0, 0, 0, 0.3) 135deg 180deg,
+            rgba(255, 255, 255, 0.15) 180deg 225deg,
+            rgba(0, 0, 0, 0.15) 225deg 270deg,
+            rgba(255, 255, 255, 0.15) 270deg 315deg,
+            rgba(0, 0, 0, 0.3) 315deg 360deg
+        ),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.6) 100%);
 
     border: 1.5px solid;
     border-top-color: #d8e2ec;
@@ -327,9 +324,8 @@
     box-shadow:
         0 0 0 1px #080a0d,
         0 3px 5px rgba(0, 0, 0, 0.75),
-        inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-        inset -3px -4px 6px rgba(0, 0, 0, 0.7),
-        inset 0 0 4px rgba(0, 0, 0, 0.4);
+        inset 1px 1px 3px rgba(255, 255, 255, 0.8),
+        inset -2px -2px 5px rgba(0, 0, 0, 0.6);
 
     transition:
         transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275),
@@ -341,33 +337,16 @@
     margin-bottom: -7px;
 }
 
-.cost-circle:nth-child(1) {
-    z-index: 10;
-}
-.cost-circle:nth-child(2) {
-    z-index: 9;
-}
-.cost-circle:nth-child(3) {
-    z-index: 8;
-}
-.cost-circle:nth-child(4) {
-    z-index: 7;
-}
-.cost-circle:nth-child(5) {
-    z-index: 6;
-}
-.cost-circle:nth-child(6) {
-    z-index: 5;
-}
-.cost-circle:nth-child(7) {
-    z-index: 4;
-}
-.cost-circle:nth-child(8) {
-    z-index: 3;
-}
-.cost-circle:nth-child(9) {
-    z-index: 2;
-}
+/* Stacking Order */
+.cost-circle:nth-child(1) { z-index: 10; }
+.cost-circle:nth-child(2) { z-index: 9; }
+.cost-circle:nth-child(3) { z-index: 8; }
+.cost-circle:nth-child(4) { z-index: 7; }
+.cost-circle:nth-child(5) { z-index: 6; }
+.cost-circle:nth-child(6) { z-index: 5; }
+.cost-circle:nth-child(7) { z-index: 4; }
+.cost-circle:nth-child(8) { z-index: 3; }
+.cost-circle:nth-child(9) { z-index: 2; }
 
 .empty-art {
     height: 100%;
@@ -433,13 +412,13 @@
     align-items: center;
     justify-content: center;
     background: transparent;
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.9));
+    filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
 }
 
 .gem-text {
     font-family: 'Cinzel', 'Times New Roman', serif;
     font-weight: 900;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     letter-spacing: -0.5px;
     user-select: none;
     z-index: 2;
@@ -449,7 +428,6 @@
 
 .damage-icon {
     left: 28px;
-    
     clip-path: polygon(
         50% 0%, 65% 22%, 95% 15%, 75% 42%, 
         100% 70%, 68% 68%, 50% 100%, 32% 68%, 
@@ -459,15 +437,19 @@
 
 .damage-icon .gem-text {
     color: #fff4e6;
+    margin-top: -6px; 
+    margin-right: 2px;
     text-shadow:
         0 1px 1px #000,
-        0 0 4px rgba(255, 60, 0, 1),
+        0 0 5px rgba(255, 60, 0, 1),
         -1px -1px 0 #4a0000,
         1px -1px 0 #4a0000,
         -1px 1px 0 #4a0000,
-        1px 1px 0 #4a0000;
+        1px 1px 0 #4a0000,
+        0 3px 4px rgba(0, 0, 0, 0.8);
 }
 
+/* Gold Bezel */
 .damage-icon::before {
     content: '';
     position: absolute;
@@ -477,30 +459,40 @@
     clip-path: inherit;
 }
 
+/* Inner Ruby Gemstone */
 .damage-icon::after {
     content: '';
     position: absolute;
-    inset: 3px; /* Thickness of the gold bezel */
+    inset: 3px; 
     z-index: -1;
     clip-path: inherit;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.9);
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.9);
+    
     background: 
-        /* Sharp Top-Left Edge Highlight */
-        linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.1) 20%, transparent 20%),
-        /* Inner Top Highlight Facet */
-        linear-gradient(180deg, rgba(255, 200, 150, 0.6) 0%, transparent 35%),
-        /* Bottom-Right Deep Shadow Crevice */
-        linear-gradient(-45deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 35%),
-        /* Hard-Stop Conic Facets (Creates the brilliant center cut) */
+        /* 1. Extreme Top-Left Glare */
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 15%),
+        
+        /* 2. Flat Geometric "Table" Cut (Creates the square/diamond flat top) */
+        linear-gradient(45deg, transparent 35%, rgba(255, 100, 100, 0.4) 35.5%, rgba(255, 255, 255, 0) 65%, transparent 65.5%),
+        linear-gradient(-45deg, transparent 35%, rgba(50, 0, 0, 0.6) 35.5%, rgba(0, 0, 0, 0) 65%, transparent 65.5%),
+        
+        /* 3. Deep Culet Glow (The bright center core) */
+        radial-gradient(circle at 50% 50%, #ff6b6b 0%, transparent 35%),
+        
+        /* 4. 12-Point Radiating Facets (Alternating bright scarlets and deep crimsons) */
         conic-gradient(from 15deg at 50% 50%, 
-            #ff2a00 0deg 45deg, 
-            #7a0000 45deg 90deg, 
-            #ff7b00 90deg 135deg, 
-            #3d0000 135deg 180deg, 
-            #e61500 180deg 225deg, 
-            #8f0000 225deg 270deg, 
-            #ff5500 270deg 315deg, 
-            #4a0000 315deg 360deg
+            #ff1a1a 0deg 30deg, 
+            #4d0000 30deg 60deg, 
+            #ff4d4d 60deg 90deg, 
+            #800000 90deg 120deg, 
+            #cc0000 120deg 150deg, 
+            #260000 150deg 180deg, 
+            #ff3333 180deg 210deg, 
+            #660000 210deg 240deg, 
+            #ff6666 240deg 270deg, 
+            #330000 270deg 300deg, 
+            #e60000 300deg 330deg, 
+            #1a0000 330deg 360deg
         );
 }
 
@@ -511,15 +503,19 @@
 
 .armor-icon .gem-text {
     color: #ffffff;
+    margin-top: -6px; 
+    margin-left: -1px;
     text-shadow:
         0 1px 1px #000,
-        0 0 4px rgba(0, 150, 255, 0.9),
+        0 0 5px rgba(0, 150, 255, 0.9),
         -1px -1px 0 #001630,
         1px -1px 0 #001630,
         -1px 1px 0 #001630,
-        1px 1px 0 #001630;
+        1px 1px 0 #001630,
+        0 3px 4px rgba(0, 0, 0, 0.8);
 }
 
+/* Silver/Steel Bezel */
 .armor-icon::before {
     content: '';
     position: absolute;
@@ -529,45 +525,38 @@
     clip-path: inherit;
 }
 
+/* Inner Sapphire Gemstone */
 .armor-icon::after {
     content: '';
     position: absolute;
     inset: 3px; 
     z-index: -1;
     clip-path: inherit;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.9);
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.9);
+    
     background: 
-        /* Flat Top Table Facet Highlight */
-        linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.15) 15%, transparent 15%),
-        /* Sharp Top-Left Corner Facet */
-        linear-gradient(110deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.2) 20%, transparent 20%),
-        /* Top-Right Edge Shadow */
-        linear-gradient(-110deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 25%, transparent 25%),
-        /* Deep Bottom Point Shadow */
-        linear-gradient(-45deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 35%, transparent 35%),
-        /* Bottom-Left Ambient Reflection */
-        linear-gradient(45deg, rgba(100, 180, 255, 0.4) 0%, transparent 35%),
-        /* Main Hard-Stop Conic Cut for Brilliant Center */
-        conic-gradient(from 0deg at 50% 35%, 
-            #020e29 0deg 60deg, 
-            #3a8df5 60deg 120deg, 
-            #082459 120deg 180deg, 
-            #155bd4 180deg 240deg, 
-            #4a9cff 240deg 300deg, 
-            #020e29 300deg 360deg
+        /* 1. Shield Step Cuts (Horizontal ridges for that classic shield-gem look) */
+        linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.1) 12%, transparent 12.5%),
+        linear-gradient(180deg, transparent 12.5%, rgba(100, 180, 255, 0.4) 13%, rgba(255, 255, 255, 0) 25%, transparent 25.5%),
+        
+        /* 2. Vertical Center Ridge (The spine of the shield) */
+        linear-gradient(90deg, transparent 48.5%, rgba(255, 255, 255, 0.6) 49.5%, rgba(0, 0, 0, 0.7) 50.5%, transparent 51.5%),
+        
+        /* 3. Cross-Facets (Diagonal cuts intersecting the center) */
+        linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.25) 41%, rgba(255, 255, 255, 0) 43%, transparent 43%),
+        linear-gradient(-135deg, transparent 40%, rgba(0, 0, 0, 0.5) 41%, rgba(0, 0, 0, 0) 43%, transparent 43%),
+        
+        /* 4. Base Sapphire Core (Deep midnights and neon blues radiating from center-top) */
+        conic-gradient(from -20deg at 50% 35%, 
+            #00112b 0deg 40deg, 
+            #1a66ff 40deg 90deg, 
+            #003380 90deg 140deg, 
+            #4d94ff 140deg 180deg, 
+            #002255 180deg 220deg, 
+            #1a66ff 220deg 270deg, 
+            #0044aa 270deg 320deg, 
+            #00112b 320deg 360deg
         );
-}
-.damage-icon .gem-text {
-    /* If it looks too low, use a negative margin-top. 
-       Adjust this value by 1-2px until it feels perfect. */
-    margin-top: -6px; 
-    margin-right: 2px;
-}
-.armor-icon .gem-text {
-    /* The shield is bottom-heavy (points down), so the text needs to move UP 
-       to sit in the widest part of the gem. */
-    margin-top: -6px; 
-    margin-left: -1px;
 }
 
 .stat-icon {
@@ -581,7 +570,7 @@
     position: absolute;
 
     top: 215px;
-    right: 2px;
+    right: 18px;
 
     width: 28px;
     height: 28px;
