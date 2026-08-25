@@ -70,8 +70,9 @@ export default function ExportButton({ cardRef, data }: Props) {
             const imageUrl = await toPng(card, {
                 width: card.offsetWidth,
                 height: card.offsetHeight,
-                canvasWidth: 750,
-                canvasHeight: 1050,
+                canvasWidth: 3000,
+                canvasHeight: 4200,
+                cacheBust: true,
                 skipFonts: false, 
                 fetchRequestInit: {
                     mode: 'no-cors' // Helps bypass strict CORS on some browsers
@@ -88,8 +89,8 @@ export default function ExportButton({ cardRef, data }: Props) {
 
             const bleed = 38; // ≈ 1/8" @ 300 DPI
 
-            const trimWidth = 750;
-            const trimHeight = 1050;
+            const trimWidth = 3000;
+            const trimHeight = 4200;
 
             const canvas = document.createElement('canvas');
             canvas.width = trimWidth + bleed * 2;
