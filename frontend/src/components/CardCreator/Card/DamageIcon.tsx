@@ -1,4 +1,3 @@
-import React from 'react';
 
 interface Props {
     value: number;
@@ -14,13 +13,13 @@ export default function DamageIcon({ value }: Props) {
     const scale = getScaleFactor(value);
 
     return (
-        <div className="gem-icon damage-icon">
-            <span 
-                className="gem-text" 
-                style={{ transform: `scale(${scale})` }}
-            >
-                {value}
-            </span>
+        <div className="gem-wrapper" style={{left: '28px'}}>
+            {/*<div className="gem-ring"></div>*/}
+            <div className="gem-icon damage-icon">
+                <span className="gem-text" style={{ transform: `scale(${scale})` }}>
+                    {value}
+                </span>
+            </div>
         </div>
     );
 }

@@ -33,13 +33,13 @@ export default function Card({ data }: Props) {
             <Artist>{data.artist}</Artist>
 
             <div className="artwork-area">
-                <ArtworkFrame artwork={data.artwork} />
-
                 {data.typeInfo.primary !== 'Champion' && (
                     <>
                         <CostDisplay costs={data.costs} />
                     </>
                 )}
+                <ArtworkFrame artwork={data.artwork} />
+
 
                 {data.typeInfo.rarity && (
                     <RarityIcon rarity={data.typeInfo.rarity} />

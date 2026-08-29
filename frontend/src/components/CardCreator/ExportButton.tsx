@@ -13,24 +13,27 @@ interface Props {
 export default function ExportButton({ cardRef, data }: Props) {
     async function exportCard() {
         const errors = validateCard(data);
-
+        
         if (errors.length) {
             alert(errors.join('\n'));
-
+            
             return;
         }
-
+        
         const card = cardRef.current;
+        const scale = 6000 / card.offsetWidth;
 
         if (!card) return;
 
         try {
-            const image = await toPng(cardRef.current, {
-                width: cardRef.current.offsetWidth,
-                height: cardRef.current.offsetHeight,
-                canvasWidth: 3000,
-                canvasHeight: 4200,
+            const imageUrl = await toPng(card, {
+                pixelRatio: scale,
                 cacheBust: true,
+                skipFonts: false,
+                style: {
+                    transform: 'scale(1)',
+                    transformOrigin: 'top left',
+                },
             });
 
             const filename = data.title
@@ -45,7 +48,7 @@ export default function ExportButton({ cardRef, data }: Props) {
 
             link.download = `${filename || 'card'}.png`;
 
-            link.href = image;
+            link.href = imageUrl;
 
             link.click();
         } catch (error) {
@@ -63,20 +66,18 @@ export default function ExportButton({ cardRef, data }: Props) {
         }
 
         const card = cardRef.current;
+        const scale = 6000 / card.offsetWidth;
         if (!card) return;
 
         try {
-            // Export the card at the finished trim size (2.5" × 3.5" @ 300 DPI)
             const imageUrl = await toPng(card, {
-                width: card.offsetWidth,
-                height: card.offsetHeight,
-                canvasWidth: 3000,
-                canvasHeight: 4200,
+                pixelRatio: scale,
                 cacheBust: true,
-                skipFonts: false, 
-                fetchRequestInit: {
-                    mode: 'no-cors' // Helps bypass strict CORS on some browsers
-                }
+                skipFonts: false,
+                style: {
+                    transform: 'scale(1)',
+                    transformOrigin: 'top left',
+                },
             });
 
             const img = new Image();
@@ -103,7 +104,7 @@ export default function ExportButton({ cardRef, data }: Props) {
             ctx.fillStyle = '#000';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            const radius = 20;
+            const radius = 8 * (6000 / card.offsetWidth);
 
             const left = bleed;
             const right = bleed + trimWidth;

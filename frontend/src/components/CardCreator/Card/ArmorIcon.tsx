@@ -12,13 +12,16 @@ export default function ArmorIcon({ value }: Props) {
     const scale = getScaleFactor(value);
 
     return (
-        <div className="gem-icon armor-icon">
-            <span 
-                className="gem-text" 
-                style={{ transform: `scale(${scale})` }}
-            >
-                {value}
-            </span>
+        <div className="gem-wrapper" style={{ right: '28px' }}>
+            {/*<div className="gem-ring"></div>*/}
+            <div className="gem-icon armor-icon">
+                <span
+                    className="gem-text"
+                    style={{ transform: `scale(${scale})` }}
+                >
+                    {value}
+                </span>
+            </div>
         </div>
     );
 }
