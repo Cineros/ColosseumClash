@@ -21,7 +21,7 @@ export default function ExportButton({ cardRef, data }: Props) {
         }
         
         const card = cardRef.current;
-        const scale = 6000 / card.offsetWidth;
+        const scale = 4000 / card.offsetWidth;
 
         if (!card) return;
 
@@ -66,7 +66,7 @@ export default function ExportButton({ cardRef, data }: Props) {
         }
 
         const card = cardRef.current;
-        const scale = 6000 / card.offsetWidth;
+        const scale = 4000 / card.offsetWidth;
         if (!card) return;
 
         try {

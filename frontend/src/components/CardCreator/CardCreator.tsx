@@ -35,6 +35,7 @@ const defaultCard: CardData = {
         primary: 'Gladiator',
         tribe: 'Dragon',
         rarity: 'Legendary',
+        set: 'Base'
     },
 
     description: 'A powerful creature from forgotten lands.',

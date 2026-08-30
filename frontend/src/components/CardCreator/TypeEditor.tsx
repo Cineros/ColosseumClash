@@ -20,9 +20,11 @@ const PRIMARY_TYPE_OPTIONS = [
     'Curse',
 ];
 
+const SET_OPTIONS = ['Base'];
+
 interface Props {
     typeInfo: CardTypeInfo;
-    
+
     damage?: number;
 
     armor?: number;
@@ -56,6 +58,20 @@ export default function TypeEditor({
     return (
         <div className="editor-section">
             <h3>Type Information</h3>
+
+            <label>Set Name</label>
+
+            <select
+                value={typeInfo.set ?? ''}
+                onChange={(e) => updateField('set', e.target.value)}
+            >
+                <option value="">Select set...</option>
+                {SET_OPTIONS.map((set) => (
+                    <option key={set} value={set}>
+                        {set}
+                    </option>
+                ))}
+            </select>
 
             <label>Rarity</label>
 
@@ -143,6 +159,11 @@ export default function TypeEditor({
 
             {typeInfo.primary === 'Champion' && (
                 <>
+                    <label>Tribe</label>
+                    <input
+                        value={typeInfo.tribe ?? ''}
+                        onChange={(e) => updateField('tribe', e.target.value)}
+                    />
                     <label>Health</label>
                     <input
                         type="number"

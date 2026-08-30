@@ -9,7 +9,7 @@ export default function DescriptionBox({ children }: Props) {
         <div className="description-box">
             <div className="description-content">
                 <ReactMarkdown>
-                    {children}
+                    {children.replace(/\\n/g, "\n")}
                 </ReactMarkdown>
             </div>
         </div>

@@ -16,6 +16,7 @@ import DamageIcon from './DamageIcon';
 import ArmorIcon from './ArmorIcon';
 import RarityIcon from './RarityIcon';
 import ChampionHealth from './ChampionHealth';
+import SetIcon from './SetIcon';
 
 interface Props {
     data: CardData;
@@ -32,6 +33,8 @@ export default function Card({ data }: Props) {
 
             <Artist>{data.artist}</Artist>
 
+            {data.typeInfo.set && <SetIcon set={data.typeInfo.set} />}
+
             <div className="artwork-area">
                 {data.typeInfo.primary !== 'Champion' && (
                     <>
@@ -39,7 +42,6 @@ export default function Card({ data }: Props) {
                     </>
                 )}
                 <ArtworkFrame artwork={data.artwork} />
-
 
                 {data.typeInfo.rarity && (
                     <RarityIcon rarity={data.typeInfo.rarity} />

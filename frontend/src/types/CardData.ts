@@ -17,6 +17,8 @@ export interface CardCost {
 export interface CardTypeInfo {
     primary: string;
 
+    set: string;
+
     tribe?: string;
 
     rarity?: string;
@@ -34,6 +36,7 @@ export interface CardMetadata {
 
 export interface CardData {
     type: string | number | readonly string[];
+
     title: string;
 
     artist: string;

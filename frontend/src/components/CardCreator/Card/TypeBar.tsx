@@ -16,6 +16,12 @@ export default function TypeBar({ typeInfo }: Props) {
                         {typeInfo.tribe}
                     </>
                 )}
+                {typeInfo.primary === 'Champion' && typeInfo.tribe && (
+                    <>
+                        {' — '}
+                        {typeInfo.tribe}
+                    </>
+                )}
                 {typeInfo.primary === 'Special' && typeInfo.speed && (
                     <>
                         {' — Speed: '}
