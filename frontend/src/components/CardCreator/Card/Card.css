@@ -118,14 +118,14 @@
     position: absolute;
     top: 3.25%;
     left: 5.25%;
-    margin: 0;
 
-    width: 86.2%;
+    margin: 0;
+    width: calc(80% - 5px);
     height: 52%;
 
-    z-index: 10;
+    z-index: 5;
 
-    font-size: 1.55rem;
+    font-size: 1.50rem;
     letter-spacing: .1rem;
     font-family: 'Beleren';
     font-stretch: expanded;
@@ -133,6 +133,9 @@
     text-align: left;
     padding-left: 5px;
     color: #ffffff;
+    overflow: hidden;
+
+    white-space: nowrap;
 
     text-shadow:
         -0.5px -0.5px 0 #000,
@@ -140,9 +143,8 @@
         -0.5px 0.5px 0 #000,
         0.5px 0.5px 0 #000,
         0 2px 4px rgba(0, 0, 0, 0.8);
-
-    z-index: 5;
 }
+
 
 .artist {
     position: absolute;
@@ -743,7 +745,7 @@
     position: absolute;
 
     top: 2.75%;
-    right: 8%;
+    right: 6%;
 
     width: 25px;
     height: 25px;

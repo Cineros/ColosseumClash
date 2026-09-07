@@ -13,13 +13,13 @@ interface Props {
 export default function ExportButton({ cardRef, data }: Props) {
     async function exportCard() {
         const errors = validateCard(data);
-        
+
         if (errors.length) {
             alert(errors.join('\n'));
-            
+
             return;
         }
-        
+
         const card = cardRef.current;
         const scale = 4000 / card.offsetWidth;
 
