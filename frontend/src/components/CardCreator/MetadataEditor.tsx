@@ -19,13 +19,6 @@ export default function MetadataEditor({ metadata = {}, setMetadata }: Props) {
         <div className="editor-section">
             <h3>Card Metadata</h3>
 
-            <label>Card Number</label>
-
-            <input
-                value={metadata.cardNumber ?? ''}
-                onChange={(e) => updateField('cardNumber', e.target.value)}
-            />
-
             <label>Creator</label>
 
             <input

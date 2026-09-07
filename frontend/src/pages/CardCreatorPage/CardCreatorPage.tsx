@@ -1,5 +1,9 @@
-import CardCreator from "../../components/CardCreator/CardCreator";
+import { useParams } from 'react-router-dom';
+
+import CardCreator from '../../components/CardCreator/CardCreator';
 
 export default function CardCreatorPage() {
-  return <CardCreator />;
+    const { id } = useParams<{ id: string }>();
+
+    return <CardCreator cardId={id} />;
 }

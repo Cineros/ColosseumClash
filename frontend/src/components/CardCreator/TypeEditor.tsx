@@ -1,26 +1,18 @@
-import type { CardTypeInfo } from '../../types/CardData';
+import {
+    PRIMARY_TYPE_OPTIONS,
+    type CardTypeInfo,
+    RARITY_OPTIONS,
+} from '../../types/CardData';
 
-const RARITY_OPTIONS = [
-    'Rare',
-    'Uncommon',
-    'Common',
-    'Basic',
-    'Backroom Rare',
-    'Imported Rare',
-    'Illicit Rare',
-    'Jackpot Rare',
+const rarity = RARITY_OPTIONS;
+const type = PRIMARY_TYPE_OPTIONS;
+
+const SET_OPTIONS = [
+    {
+        id: '767e1a46-7277-4367-9fc5-e8a075814f59',
+        name: 'Enter the Arena',
+    },
 ];
-
-const PRIMARY_TYPE_OPTIONS = [
-    'Gladiator',
-    'Special',
-    'Field',
-    'Champion',
-    'Boon',
-    'Curse',
-];
-
-const SET_OPTIONS = ['Base'];
 
 interface Props {
     typeInfo: CardTypeInfo;
@@ -62,13 +54,28 @@ export default function TypeEditor({
             <label>Set Name</label>
 
             <select
-                value={typeInfo.set ?? ''}
-                onChange={(e) => updateField('set', e.target.value)}
+                value={typeInfo.setId ?? ''}
+                onChange={(e) => {
+                    const selectedSet = SET_OPTIONS.find(
+                        (set) => set.id === e.target.value,
+                    );
+
+                    if (!selectedSet) {
+                        return;
+                    }
+
+                    setTypeInfo({
+                        ...typeInfo,
+                        setId: selectedSet.id,
+                        set: selectedSet.name,
+                    });
+                }}
             >
                 <option value="">Select set...</option>
+
                 {SET_OPTIONS.map((set) => (
-                    <option key={set} value={set}>
-                        {set}
+                    <option key={set.id} value={set.id}>
+                        {set.name}
                     </option>
                 ))}
             </select>
@@ -81,9 +88,9 @@ export default function TypeEditor({
             >
                 <option value="">Select rarity...</option>
 
-                {RARITY_OPTIONS.map((rarity) => (
-                    <option key={rarity} value={rarity}>
-                        {rarity}
+                {rarity.map((r) => (
+                    <option key={r} value={r}>
+                        {r}
                     </option>
                 ))}
             </select>
@@ -106,9 +113,9 @@ export default function TypeEditor({
             >
                 <option value="">Select primary type...</option>
 
-                {PRIMARY_TYPE_OPTIONS.map((type) => (
-                    <option key={type} value={type}>
-                        {type}
+                {type.map((t) => (
+                    <option key={t} value={t}>
+                        {t}
                     </option>
                 ))}
             </select>

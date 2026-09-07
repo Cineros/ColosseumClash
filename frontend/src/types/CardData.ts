@@ -14,10 +14,31 @@ export interface CardCost {
     amount: number;
 }
 
+export const RARITY_OPTIONS = [
+    'Rare',
+    'Uncommon',
+    'Common',
+    'Basic',
+    'Backroom Rare',
+    'Imported Rare',
+    'Illicit Rare',
+    'Jackpot Rare',
+];
+
+export const PRIMARY_TYPE_OPTIONS = [
+    'Gladiator',
+    'Special',
+    'Field',
+    'Champion',
+    'Boon',
+    'Curse',
+];
+
 export interface CardTypeInfo {
     primary: string;
 
     set: string;
+    setId?: string;
 
     tribe?: string;
 
@@ -26,10 +47,11 @@ export interface CardTypeInfo {
     speed?: string;
 }
 
-export interface CardMetadata {
-    setName?: string;
 
-    cardNumber?: string;
+
+export interface CardMetadata {
+
+    cardNumber?: number;
 
     creator?: string;
 }
@@ -47,7 +69,7 @@ export interface CardData {
 
     typeInfo: CardTypeInfo;
 
-    description: string;
+    description?: string;
 
     artwork?: string;
 

@@ -1,7 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersModule } from './users/users.module';
+import { PrismaModule } from './prisma/prisma.module';
+import { CardSetsModule } from './card-sets/card-sets.module';
+import { UploadsModule } from './uploads/uploads.module';
+import { CardsModule } from './cards/cards.module';
+
+
 
 @Module({
   imports: [
@@ -9,14 +13,10 @@ import { UsersModule } from './users/users.module';
       isGlobal: true,
     }),
 
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      url: process.env.DATABASE_URL,
-      autoLoadEntities: true,
-      synchronize: true,
-    }),
-
-    UsersModule,
+    PrismaModule,
+    CardSetsModule,
+    UploadsModule,
+    CardsModule,
   ],
 })
 export class AppModule {}

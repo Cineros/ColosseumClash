@@ -4,23 +4,45 @@ interface Props {
 }
 
 export default function ArtworkUploader({ artwork, setArtwork }: Props) {
-    function handleUpload(event: React.ChangeEvent<HTMLInputElement>) {
+    async function handleUpload(
+        event: React.ChangeEvent<HTMLInputElement>,
+    ) {
         const file = event.target.files?.[0];
 
         if (!file) return;
 
-        const imageURL = URL.createObjectURL(file);
+        const formData = new FormData();
+        formData.append('file', file);
 
-        setArtwork(imageURL);
+        const response = await fetch(
+            'http://localhost:4000/uploads/artwork',
+            {
+                method: 'POST',
+                body: formData,
+            },
+        );
+
+        if (!response.ok) {
+            console.error('Artwork upload failed');
+            return;
+        }
+
+        const data = await response.json();
+
+        setArtwork(data.imagePath);
     }
 
     return (
         <div>
             <h3>Artwork</h3>
 
-            <input type="file" accept="image/*" onChange={handleUpload} />
+            <input
+                type="file"
+                accept="image/*"
+                onChange={handleUpload}
+            />
 
-            {artwork && <p>Image selected</p>}
+            {artwork && <p>Image uploaded</p>}
         </div>
     );
 }

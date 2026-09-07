@@ -126,6 +126,7 @@
     z-index: 10;
 
     font-size: 1.55rem;
+    letter-spacing: .1rem;
     font-family: 'Beleren';
     font-stretch: expanded;
     font-kerning: auto;
@@ -221,6 +222,7 @@
     font-size: small;
     font-weight: 600;
     text-align: left;
+    letter-spacing: .02rem;
     
     border: 2px solid transparent; 
     border-bottom-left-radius: 10px;

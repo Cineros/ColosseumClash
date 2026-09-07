@@ -1,28 +1,58 @@
 generator client {
-  provider = "prisma-client"
+  provider     = "prisma-client"
+  output       = "../src/generated"
+  moduleFormat = "cjs"
 }
+
 
 datasource db {
   provider = "postgresql"
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  username  String   @unique
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
+model CardSet {
+  id            String   @id @default(uuid())
+  name          String
+  cardCount Int @default(200)
+  status        String   @default("draft")
+  cardsEditable Boolean  @default(true)
 
-  cards Card[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  finalizedAt   DateTime?
+
+  cards         Card[]
 }
 
+
 model Card {
-  id          Int      @id @default(autoincrement())
+  id         String   @id @default(uuid())
+  cardNumber Int
+
+  setId      String
+  set        CardSet  @relation(fields: [setId], references: [id])
+
   title       String
   description String?
-  imagePath   String
-  createdAt   DateTime @default(now())
+  artwork String?
 
-  ownerId Int
-  owner User @relation(fields: [ownerId], references: [id])
+
+  creator     String
+  artist      String
+
+  colors String[]
+  costs Json
+
+  primaryType String
+  tribe       String?
+  rarity      String?
+  speed       String?
+
+  damage      Int?
+  armor       Int?
+  health      Int?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([setId, cardNumber])
 }
